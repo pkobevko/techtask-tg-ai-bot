@@ -1,11 +1,12 @@
 package com.tttgaibot.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tttgaibot.model.Message;
-import java.util.ArrayList;
-import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,6 +18,7 @@ public class ChatRequestDto {
 
     private String model;
     private List<Message> messages;
+    @JsonProperty("n")
     private int numberOfResponses;
     private double temperature;
 
