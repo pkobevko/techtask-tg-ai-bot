@@ -9,12 +9,9 @@ import java.util.NoSuchElementException;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class UpdateHandlerStrategyImpl implements UpdateHandlerStrategy {
     private final List<UpdateHandler> updateHandlers;
-
-    public UpdateHandlerStrategyImpl(List<UpdateHandler> updateHandlers) {
-        this.updateHandlers = updateHandlers;
-    }
 
     @Override
     public UpdateHandler getUpdateHandler(Update update) {
