@@ -26,15 +26,17 @@ public class QuestionController {
     private final UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<Question>> getQuestionsByStatus(@RequestParam Question.Status status) {
+    public ResponseEntity<List<Question>> getQuestionsByStatus(
+            @RequestParam Question.Status status) {
         List<Question> allByStatus = questionService.getAllByStatus(status);
         return new ResponseEntity<>(allByStatus, HttpStatus.OK);
     }
 
     @PostMapping("/{id}/answer")
-    public ResponseEntity<Question> answerTheQuestion(Authentication authentication,
-                                                      @PathVariable("id") Long questionId,
-                                                      @RequestBody AnswerRequestDto answerRequestDto) {
+    public ResponseEntity<Question> answerTheQuestion(
+            Authentication authentication,
+            @PathVariable("id") Long questionId,
+            @RequestBody AnswerRequestDto answerRequestDto) {
         User user = userService.getByEmail(authentication.getName()).get();
         Question question = questionService.answer(questionId, answerRequestDto.getText(), user);
         return new ResponseEntity<>(question, HttpStatus.ACCEPTED);
