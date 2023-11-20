@@ -13,13 +13,12 @@ import org.springframework.web.client.RestTemplate;
 @RequiredArgsConstructor
 public class ChatgptServiceImpl implements ChatgptService {
     private static final int FIRST_CHOICE_NUMBER = 0;
-
-    @Qualifier("chatgptRestTemplate")
-    private final RestTemplate restTemplate;
     @Value("${openai.model}")
     private String model;
     @Value("${openai.api.url}")
     private String apiUrl;
+    @Qualifier("chatgptRestTemplate")
+    private final RestTemplate restTemplate;
 
     @Override
     public String ask(String question) {

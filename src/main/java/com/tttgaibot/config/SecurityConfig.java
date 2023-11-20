@@ -1,11 +1,13 @@
 package com.tttgaibot.config;
 
+import com.tttgaibot.model.User;
 import com.tttgaibot.security.jwt.JwtConfigurer;
 import com.tttgaibot.security.jwt.JwtTokenFilter;
 import com.tttgaibot.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -36,6 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/register", "/login").permitAll()
+                .antMatchers(HttpMethod.GET, "/chats/*/logs").hasRole(User.Role.ADMIN.name())
+                .antMatchers(HttpMethod.GET, "/questions").hasRole(User.Role.ADMIN.name())
+                .antMatchers(HttpMethod.POST, "/questions/*/answer").hasRole(User.Role.ADMIN.name())
                 .anyRequest().authenticated()
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider));
@@ -47,5 +52,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public JwtTokenFilter jwtTokenFilter() {
         return new JwtTokenFilter(jwtTokenProvider);
     }
-
 }
