@@ -2,10 +2,10 @@ package com.tttgaibot.service.impl;
 
 import com.tttgaibot.exception.TelegramBotResponseException;
 import com.tttgaibot.service.MessageSender;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @Component
 public class MessageSenderImpl implements MessageSender {

@@ -3,8 +3,8 @@ package com.tttgaibot.service.impl;
 import com.tttgaibot.model.ChatLog;
 import com.tttgaibot.repository.ChatLogRepository;
 import com.tttgaibot.service.ChatLogService;
-import lombok.RequiredArgsConstructor;
 import java.time.ZonedDateTime;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
