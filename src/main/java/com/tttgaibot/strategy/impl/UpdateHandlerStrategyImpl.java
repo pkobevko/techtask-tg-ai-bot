@@ -2,11 +2,11 @@ package com.tttgaibot.strategy.impl;
 
 import com.tttgaibot.strategy.UpdateHandler;
 import com.tttgaibot.strategy.UpdateHandlerStrategy;
-import lombok.RequiredArgsConstructor;
-import org.telegram.telegrambots.meta.api.objects.Update;
 import java.util.List;
 import java.util.NoSuchElementException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.meta.api.objects.Update;
 
 @Component
 @RequiredArgsConstructor
